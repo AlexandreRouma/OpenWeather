@@ -1,0 +1,5 @@
+{
+    "Port": "80",
+    "SerialPort": "COM14",
+    "PowerOnDelay": 2000
+}

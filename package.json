@@ -1,0 +1,26 @@
+{
+  "name": "openweather",
+  "version": "1.0.0",
+  "description": "Open Source Weather Station Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandreRouma/OpenWeather.git"
+  },
+  "keywords": [
+    "weather"
+  ],
+  "author": "xX_WhatsTheGeek_Xx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexandreRouma/OpenWeather/issues"
+  },
+  "homepage": "https://github.com/AlexandreRouma/OpenWeather#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "serialport": "^6.2.2"
+  }
+}
