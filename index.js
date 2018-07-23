@@ -83,13 +83,17 @@ async function main() {
 
     Logger.log('Starting webserver...');
     try {
-        // app.get('/getTemp', (req, res) => {
-        //     res.send(currentTemp.toString());
-        // });
+        app.get('/getTemp', (req, res) => {
+            if (currentTemp) {
+                res.send(currentTemp.toString());
+            }
+        });
         
-        // app.get('/lastHour', (req, res) => {
-        //     res.send(JSON.stringify(lastHour));
-        // });
+        app.get('/lastHour', (req, res) => {
+            if (logs_hour) {
+                res.send(JSON.stringify(logs_hour));
+            }
+        });
         
         app.use(express.static('html'));
         
