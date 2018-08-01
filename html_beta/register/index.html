@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/animations.js"></script>
+    <script src="../js/scripts.js"></script>
+    <title>Register</title>
+</head>
+
+<body style="background-color: #343a40">
+
+<div class="login">
+    <div class="login-container">
+        <div class="login-title">
+            Register
+        </div>
+        <div class="login-content">
+            <form method="post" action="../server/register">
+                <div id="existing_user" class="breakable" hidden="true"><span class="error-message">Sorry, this username is already taken</span><br><br></div>
+                <div id="pw_missmatch" class="breakable" hidden="true"><span class="error-message">Passwords don't match</span><br><br></div>
+                <div id="server_error" class="breakable" hidden="true"><span class="error-message">Server error</span><br><br></div>
+                Username<br>
+                <input type="text" name="username" class="login-textbox" placeholder="Username" required autofocus/>
+                Password<br>
+                <input type="password" name="password" class="login-textbox" placeholder="Password" required/>
+                Verify Password<br>
+                <input type="password" name="verify_password" class="login-textbox" placeholder="Verify password" required/>
+                <input type="hidden" id="date" name="date"/>
+                <input type="submit" value="Register" class="login-submit"/>
+            </form>
+            <script>
+                if ($_GET['existing_user']) {
+                    document.getElementById('existing_user').hidden = false;
+                }
+                if ($_GET['pw_missmatch']) {
+                    document.getElementById('pw_missmatch').hidden = false;
+                }
+                if ($_GET['server_error']) {
+                    document.getElementById('server_error').hidden = false;
+                }
+            </script>
+            <div class="login-links">
+                <div >
+                    <a class="login-link" href="../login">Login page</a>
+                </div>
+                <div>
+                    <a class="login-link" href="../login">Forgot password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

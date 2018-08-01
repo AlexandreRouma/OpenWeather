@@ -8,9 +8,13 @@ module.exports.loaddefault = function () {
     config = {
         Port: '80',
         SerialPort: 'INSERT_HERE',
-        PowerOnDelay: 1000
+        PowerOnDelay: 1000,
+        Users: {
+            Pi: {
+                password: 'sha1$28f1bc44$1$eb4dacfa98bcd4cb09409f7a7ca0e3f16380ea7a'
+            }
+        }
     };
-    tags = {};
 };
 
 module.exports.loadconfig = function () {

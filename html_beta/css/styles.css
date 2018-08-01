@@ -1,0 +1,317 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+:root {
+    --sidebar-width: 250px;
+}
+
+html, body{
+    font-family: Roboto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div.top-bar {
+    position: fixed;
+    background-color: #343a40;
+    width: 100%;
+    height: 55px;
+    display:block;
+}
+
+div.rainbow {
+    position: fixed;
+    top: 55px;
+    background: linear-gradient(to right, #cd3331, #2d78ed);
+    width: 100%;
+    height: 5px;
+}
+
+div.title {
+    height: 100%;
+    float: left;
+    display: table;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+a.title {
+    text-decoration: none;
+    display:table-cell;
+    vertical-align:middle;
+    color: #ecf0f1;
+}
+
+div.topbar-right-element {
+    height: 100%;
+    float: right;
+    display: table;
+    margin-right: 20px;
+}
+
+.topbar-right-content {
+    text-decoration: none;
+    display:table-cell;
+    vertical-align:middle;
+    color: #ecf0f1;
+}
+
+a.topbar-right-content {
+    text-decoration: none;
+    display:table-cell;
+    vertical-align:middle;
+    color: #bdc3c7;
+}
+
+a.topbar-right-content:hover {
+    color: #ecf0f1;
+}
+
+div.sidebar {
+    position: fixed;
+    top: 60px;
+    background-color: #343a40;
+    padding-top: 10px;
+    width: 250px;
+    height: 100%;
+}
+
+a.sidebar-button {
+    width: 100%;
+    height: 60px;
+    text-decoration: none;
+    vertical-align:middle;
+    color: #bdc3c7;
+    display: table;
+}
+
+div.sidebar-button-content {
+    padding-left: 20px;
+    display:table-cell;
+    vertical-align:middle;
+}
+
+div.sidebar-button-content:hover {
+    color: #ecf0f1;
+}
+
+div.vert-align {
+    display: flex;
+}
+
+div.content {
+    width: calc(100% - (var(--sidebar-width) + 10px));
+    padding-top: 5px;
+    padding-left: 5px;
+    position: relative;
+    z-index: -1;
+    top: 60px;
+    left: 250px;
+    right: 10px;
+}
+
+div.groupbox-title {
+    border-top: solid rgb(218, 218, 218) 1px;
+    border-left: solid rgb(218, 218, 218) 1px;
+    border-right: solid rgb(218, 218, 218) 1px;
+    border-radius: 5px 5px 0 0;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    background-color: #f7f7f7;
+}
+
+div.groupbox-content {
+    border: solid rgb(218, 218, 218) 1px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+}
+
+div.groupbox-footer {
+    border-bottom: solid rgb(218, 218, 218) 1px;
+    border-left: solid rgb(218, 218, 218) 1px;
+    border-right: solid rgb(218, 218, 218) 1px;
+    border-radius: 0 0 5px 5px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    background-color: #f7f7f7;
+    font-size: 13px;
+    color: #7e7e7e;
+}
+
+div.groupbox-container {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+div.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+div.login-title {
+    border-top: solid rgb(218, 218, 218) 1px;
+    border-left: solid rgb(218, 218, 218) 1px;
+    border-right: solid rgb(218, 218, 218) 1px;
+    border-bottom: solid rgb(218, 218, 218) 1px;
+    border-radius: 5px 5px 0 0;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    background-color: #f7f7f7;
+}
+
+div.login-content {
+    background-color: white;
+    border-bottom: solid rgb(218, 218, 218) 1px;
+    border-left: solid rgb(218, 218, 218) 1px;
+    border-right: solid rgb(218, 218, 218) 1px;
+    border-radius: 0 0 5px 5px;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+}
+
+div.login-container {
+    width: 400px;
+    margin-top: 50px;
+}
+
+input.login-textbox {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 5px;
+    height: 28px;
+    border: solid rgb(218, 218, 218) 1px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: #434a52;
+    width: calc(100% - 28px);
+}
+
+input.login-textbox:focus {
+    box-shadow: 0 0 2px 2px #99ceff;
+    border: solid #4bb1ff 1px;
+}
+
+input.login-textbox-invalid:focus {
+    box-shadow: 0 0 2px 2px #99ceff;
+    border: solid #4bb1ff 1px;
+}
+
+input.login-submit {
+    border: solid #007bfd 1px;
+    background-color: #188cfd;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: calc(100% - 17px);
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input.login-submit:hover {
+    background-color: #007bfd;
+}
+
+div.nav-current {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: calc(100% - 20px);
+}
+
+span.error-message {
+    color: red;
+    border: solid red 1px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffc5c7;
+}
+
+span.success-message {
+    color: green;
+    border: solid green 1px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #c2ffc1;
+}
+
+div.login-links {
+    text-decoration: none;
+    vertical-align:middle;
+    display: table;
+    text-align: center;
+    width: calc(100% - 16px);
+    text-decoration: none;
+}
+a.login-link {
+    text-decoration: none;
+    color: #0000ff;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td{
+    border: solid rgb(218, 218, 218) 1px;
+    text-align: left;
+    padding: 8px;
+    margin: 0;
+}
+
+th {
+    border: solid rgb(218, 218, 218) 1px;
+    border-bottom: solid rgb(218, 218, 218) 2px;
+    text-align: left;
+    padding: 8px;
+    margin: 0;
+}
+
+.red-button {
+    text-decoration: none;
+    border: solid red 1px;
+    background-color: #ff3c38;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.red-button:hover {
+    background-color: #d6322f;
+}
+
+.green-button {
+    text-decoration: none;
+    color: white;
+    border: solid green 1px;
+    background-color: #408041;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.green-button:hover {
+    background-color: #376e38;
+}
+
+select {
+    border-color:rgb(218, 218, 218);
+    border-radius: 3px;
+    border-style: solid
+}

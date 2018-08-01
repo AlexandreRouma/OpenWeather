@@ -1,0 +1,142 @@
+<?php require("../include/verify_login.php") ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/animations.js"></script>
+    <script src="../js/scripts.js"></script>
+    <title>Admin Page / Users</title>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="title">
+            <a class="title" href="../Dashboard">
+                Admin Page
+            </a>
+        </div>
+        <div class="topbar-right-element">
+            <a class="topbar-right-content" href="../server/logout">
+                <div class="vert-align">
+                    <i class="fa fa-sign-out-alt" style="font-size:20px;margin-right: 5px;"></i> Logout
+                </div>
+            </a>
+        </div>
+        <div class="topbar-right-element">
+            <span class="topbar-right-content" href="../server/logout">
+                <div class="vert-align">
+                    <i class="fa fa-unlock-alt" style="font-size:20px;margin-right: 5px;"></i> Welcome,&nbsp;<span id="username"></span>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('username').innerText = $_SESSION.username;
+    </script>
+
+    <div class="sidebar">
+        <a class="sidebar-button" href="../Dashboard">
+            <div class="sidebar-button-content">
+                <span class="sidebar-button-icon"><i class="fa fa-tachometer-alt"
+                                                        style="font-size:20px;margin-right: 8px;"></i></span>
+                <span class="sidebar-button-text">Dashboard</span>
+            </div>
+        </a>
+        <a class="sidebar-button" href="https://www.google.com/">
+            <div class="sidebar-button-content">
+                <span class="sidebar-button-icon"><i class="fa fa-chart-area" style="font-size:20px;margin-right: 8px;"></i></span>
+                <span class="sidebar-button-text">Stats</span>
+            </div>
+        </a>
+        <a class="sidebar-button" href="../Users">
+            <div class="sidebar-button-content">
+                <span class="sidebar-button-icon"><i class="fa fa-users"
+                                                        style="font-size:20px;margin-right: 8px;"></i></span>
+                <span class="sidebar-button-text">Users</span>
+            </div>
+        </a>
+        <a class="sidebar-button" id="retract"
+            style="position: absolute; bottom: 70px; background-color: #23272b; cursor: pointer;">
+            <div class="sidebar-button-content" style="text-align: center; padding-left: 0;">
+                <span class="sidebar-button-icon" id="retract-icon"><i class="fa fa-angle-left" style="font-size:20px;"></i></span>
+            </div>
+        </a>
+        <a class="sidebar-button" href="../Info">
+            <div class="sidebar-button-content">
+                <span class="sidebar-button-icon"><i class="fa fa-info-circle"
+                                                        style="font-size:20px;margin-right: 8px;"></i></span>
+                <span class="sidebar-button-text">Info</span>
+            </div>
+        </a>
+    </div>
+        
+    <div class="rainbow"></div>
+
+    <div class="content">
+        <div class="nav-current">
+            <span style="color: #007bfd;">Admin Page</span> / Users
+        </div>
+        <div class="groupbox-container" style="width: 100%; float: left;">
+            <div class="groupbox-title">
+                <i class="fa fa-users" style="font-size:20px;margin-right: 8px;"></i> User list
+            </div>
+            <div class="groupbox-content">
+                <form method="post" action="../server/deleteusers">
+                    <table id="usertable">
+                        <tr>
+                            <th style="width: 30px"></th>
+                            <th>Username</th>
+                            <th>Registered</th>
+                            <th>Last login</th>
+                        </tr>
+                    </table><br>
+                    <div id="nouser" class="breakable" hidden="true"><span class="error-message">No user selected</span><br><br></div>
+                    <div id="servererror" class="breakable" hidden="true"><span class="error-message">Server error</span><br><br></div>
+                    <div id="selfdelete" class="breakable" hidden="true"><span class="error-message">Can't delete yourself</span><br><br></div>
+                    <div id="success" class="breakable" hidden="true"><span class="success-message">Deleted selection</span><br><br></div>
+                    <div id="regsuccess" class="breakable" hidden="true"><span class="success-message">The account has been created sucessfully !</span><br><br></div>
+                    <script>
+                        let table = document.getElementById('usertable');
+
+                        let xhttp = new XMLHttpRequest();
+                        xhttp.open("GET", `/server/listusers`, false);
+                        xhttp.send();
+                        JSON.parse(xhttp.responseText).forEach((user) => {
+                            let entry = '';
+                            entry += '<tr>\n';
+                            entry += `<td><input type="checkbox" name="${user.username}"/></td>\n`;
+                            entry += `<td>${user.username}</td>\n`;
+                            entry += `<td>${user.created}</td>\n`;
+                            entry += `<td>${user.lastlogin || 'never'}</td>\n`;
+                            entry += '</tr>\n';
+                            table.innerHTML += entry;   
+                        });
+                        if ($_GET['nouser']) {
+                         
+                            document.getElementById('nouser').hidden = false;
+                        }
+                        if ($_GET['selfdelete']) {
+                            document.getElementById('selfdelete').hidden = false;
+                        }
+                        if ($_GET['success']) {
+                            document.getElementById('success').hidden = false;
+                        }
+                    </script>
+                    <div>
+                        <input type="submit" value="Delete" class="red-button"/>
+                        <input type="button" value="Create" class="green-button" onclick="window.location = '../register';"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

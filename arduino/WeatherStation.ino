@@ -1,9 +1,11 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <TimerOne.h>
+#include <Wire.h>
+#include <Adafruit_BMP085.h>
 
 #define VER_MAJOR 1
-#define VER_MINOR 0
+#define VER_MINOR 1
 #define VER_BUILD 0
 
 #define TEMP_PIN  7
@@ -11,15 +13,18 @@
 OneWire oneWire(TEMP_PIN);
 DallasTemperature sensors(&oneWire);
 DeviceAddress insideThermometer;
+Adafruit_BMP085 bmp;
 
 float currentTemp = 0.00;
+uint32_t currentPressure = 0;
 
 void setup() {
   Serial.begin(115200);
   sensors.begin();
   sensors.getAddress(insideThermometer, 0);
   sensors.setResolution(insideThermometer, 12);
-  Timer1.initialize(750000);
+  bmp.begin();
+  Timer1.initialize(800000);
   Timer1.attachInterrupt(sendTemp);
 }
 
@@ -42,6 +47,11 @@ void loop() {
           Serial.write((byte)(val >> 16));
           Serial.write((byte)(val >> 8));
           Serial.write((byte)(val));
+          val = currentPressure;
+          Serial.write((byte)(val >> 24));
+          Serial.write((byte)(val >> 16));
+          Serial.write((byte)(val >> 8));
+          Serial.write((byte)(val));
           break;
         }
         default:
@@ -54,4 +64,5 @@ void loop() {
 void sendTemp(void) {
   sensors.requestTemperatures();
   currentTemp = sensors.getTempC(insideThermometer);
+  currentPressure = bmp.readPressure();
 }

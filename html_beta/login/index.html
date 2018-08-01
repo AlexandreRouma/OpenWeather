@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/animations.js"></script>
+    <script src="../js/scripts.js"></script>
+    <title>Login</title>
+</head>
+
+<body style="background-color: #343a40">
+<div class="login">
+    <div class="login-container">
+        <div class="login-title">
+            Login
+        </div>
+        <div class="login-content">
+            <form method="post" action="../server/login">
+                <div id="invalid_creds" class="breakable" hidden="true"><span class="error-message">Invalid username or password</span><br><br></div>
+                <div id="server_error" class="breakable" hidden="true"><span class="error-message">Server error</span><br><br></div>
+                Username<br>
+                <input type="text" name="username" class="login-textbox" placeholder="Username" required autofocus/>
+                Password<br>
+                <input type="password" name="password" class="login-textbox" placeholder="Password" required/>
+                <input type="hidden" id="date" name="date"/>
+                <input type="submit" value="Login" class="login-submit"/>
+            </form>
+            <script>
+            if ($_GET['invalid_creds']) {
+                document.getElementById('invalid_creds').hidden = false;
+            }
+            if ($_GET['server_error']) {
+                document.getElementById('server_error').hidden = false;
+            }
+            </script>
+            <div class="login-links">
+                <div>
+                    <a class="login-link" href="../login">Forgot password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

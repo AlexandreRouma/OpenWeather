@@ -1,5 +1,17 @@
 {
     "Port": "80",
     "SerialPort": "COM14",
-    "PowerOnDelay": 2000
+    "PowerOnDelay": 2000,
+    "Users": {
+        "Pi": {
+            "password": "sha1$0c480bde$1$b3b81b4bb63f910005b72e8726765e976516b31f",
+            "created": "2018-07-28T19:24:00.426Z",
+            "lastlogin": "2018-08-01T18:08:46.687Z"
+        },
+        "ahoZiorce": {
+            "password": "sha1$41dfd6c9$1$7792ef8e6acae49ff187d09466971b4beaf359e6",
+            "created": "2018-08-01T19:39:46.508Z",
+            "lastlogin": "2018-08-01T19:40:36.185Z"
+        }
+    }
 }
