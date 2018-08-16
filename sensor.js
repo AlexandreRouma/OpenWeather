@@ -6,7 +6,6 @@ let handler;
 
 module.exports.init = (serialport) => {
     port = new SerialPort(serialport, { baudRate: 115200});
-
     port.on('data', (data) => {
         handler(data);
     });
@@ -32,8 +31,6 @@ module.exports.queryInfo = () => {
     });
 }
 
-let lastemp = 0.00;
-
 module.exports.getData = () => {
     port.write(new Buffer([0x42, 0x02]));
     return new Promise((res, rej) => {
@@ -52,7 +49,7 @@ module.exports.getData = () => {
                 pres |= data[8];
 
                 res({
-                    temperature: lastemp,//temp / 100,
+                    temperature: temp / 100,
                     pressure: pres
                 });
             }
