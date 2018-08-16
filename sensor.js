@@ -51,32 +51,10 @@ module.exports.getData = () => {
                 pres |= data[7] << 8;
                 pres |= data[8];
 
-                try {
-                    http.get('http://192.168.0.111:4242/getTemp', (r) => {
-                        let data = '';
-    
-                        // A chunk of data has been recieved.
-                        r.on('data', (chunk) => {
-                            data += chunk;
-                        });
-                        
-                        // The whole response has been received. Print out the result.
-                        r.on('end', () => {
-                            lastemp = parseFloat(data);
-                            res({
-                                temperature: parseFloat(data),//temp / 100,
-                                pressure: pres
-                            });
-                        });
-                        
-                    })
-                }
-                catch (e) {
-                    res({
-                        temperature: lastemp,//temp / 100,
-                        pressure: pres
-                    });
-                }
+                res({
+                    temperature: lastemp,//temp / 100,
+                    pressure: pres
+                });
             }
             //res(undefined);
         };

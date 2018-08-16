@@ -4,7 +4,7 @@
 #include <Wire.h>
 #include <Adafruit_BMP085.h>
 
-#define VER_MAJOR 1
+#define VER_MAJOR 2
 #define VER_MINOR 1
 #define VER_BUILD 0
 
